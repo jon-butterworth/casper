@@ -3,9 +3,7 @@ import requests
 
 from bs4 import BeautifulSoup
 from textblob import Word
-from pyown import OWM
-from pyowm-utils import config
-from pyown-utils import timestamp
+from pyowm import OWM
 
 def check_weather(command):
     fluff_words = ["in", "over", "like"]
@@ -16,9 +14,8 @@ def check_weather(command):
         command = "exeter,gb"
 
     owm = OWM(os.environ.get('PYOWM_KEY'))
-    w = owm.weather_manager().weather_at_place('command').weather
-    report = "It's {temp} degrees and I would describe the condition as {condition}.".format(
-        temp=w.temperature('celsius')["temp"], condition=w.detailed_report())
+    w = owm.weather_manager().weather_at_place(command).weather
+    report = "It's {temp} degrees and I would describe the condition as {condition}.".format(temp=w.temperature('celsius')["temp"], condition=w.detailed_report)
     return report
 
 def define(command):
