@@ -1,14 +1,17 @@
 import re
 
 match_triggers = (
-    (re.compile("(Hey|Hi|Hello|Howdy|Greetings)"), "hello"),
-    (re.compile("define"), "define")
+    (re.compile("(hey|hi|hello|howdy|yo|greetings)"), "hello"),
+    (re.compile("define"), "define"),
 )
+
 
 search_triggers = (
     (re.compile("weather"), "weather"),
     (re.compile("joke"), "joke"),
+    (re.compile("(bitcoin[?]|ethereum[?]|litecoin[?]|xrp[?])"), "crypto")
 )
+
 
 def get_response_key(command, regex_type='match'):
     regex = re.match if regex_type == 'match' else re.search
@@ -16,5 +19,4 @@ def get_response_key(command, regex_type='match'):
     for key, value in lookup:
         if regex(key, command):
             return value
-
     return None

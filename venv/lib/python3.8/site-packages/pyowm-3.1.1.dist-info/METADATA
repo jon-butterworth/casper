@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: pyowm
+Version: 3.1.1
+Summary: A Python wrapper around OpenWeatherMap web APIs
+Home-page: https://github.com/csparpa/pyowm
+Author: Claudio Sparpaglione
+Author-email: csparpa@gmail.com
+License: MIT
+Keywords: openweathermap web api client weather forecast uv alerting owm pollution meteostation agro agriculture
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.7
+Requires-Dist: PySocks (<2,>=1.7.1)
+Requires-Dist: geojson (<3,>=2.3.0)
+Requires-Dist: requests (<3,>=2.20.0)
+Requires-Dist: requests[socks]
+
+PyOWM is a client Python wrapper library for OpenWeatherMap web APIs. It allows quick and easy 
+consumption of OWM data from Python applications via a simple object model and in a human-friendly fashion.
+
