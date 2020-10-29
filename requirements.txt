@@ -1,7 +1,0 @@
-flask
-slackeventsapi
-dotenv
-bs4
-textblob
-pyowm
-
