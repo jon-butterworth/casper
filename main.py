@@ -2,13 +2,13 @@ import os
 import slack
 import random
 from pathlib import Path
-from dotenv import load_dotenv
 from flask import Flask
 from slackeventsapi import SlackEventAdapter
 from triggers import get_response_key
 from resp_map import resp_dict
+from dotenv import load_dotenv
 
-env_path = Path('.') / '.env'
+env_path = Path('') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 app = Flask(__name__)

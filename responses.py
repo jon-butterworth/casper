@@ -12,7 +12,7 @@ from requests import Request, Session
 import nltk
 nltk.download('wordnet')
 
-env_path = Path('.') / '.env'
+env_path = Path('') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 
