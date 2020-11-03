@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: casper
+spec:
+  selector:
+    matchLabels:
+      run: casper
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: casper
+    spec:
+      containers:
+      - name: casper
+        image: jonnybinthemix/casper:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

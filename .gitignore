@@ -1,0 +1,5 @@
+.env
+.idea/
+__pycache__/
+venv/
+k8s/secrets.yaml
