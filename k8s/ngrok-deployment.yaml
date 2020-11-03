@@ -15,7 +15,15 @@ spec:
       containers:
       - name: ngrok
         image: wernight/ngrok
-        command: ["ngrok"]
-        args: ["http", "casper-service:5000"]
+        env:
+        - name: NGROK_AUTH
+          valueFrom:
+            secretKeyRef:
+              name: ngrok-auth
+              key: ngrok-auth
+        command: ["/bin/ash", "-c"]
+        args: ["ngrok authtoken $NGROK_AUTH", "ngrok http casper-service:5000"]
+#        command: ["ngrok"]
+#        args: ["http", "casper-service:5000"]
         ports:
         - containerPort: 4040

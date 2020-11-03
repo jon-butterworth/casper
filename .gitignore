@@ -1,4 +1,4 @@
 .env
 __pycache__/
 venv/
-
+k8s/secrets.yaml
