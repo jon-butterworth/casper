@@ -1,7 +1,6 @@
 # <div align="center">Casper - The friendly Slack Bot</div>
 Casper is a slack bot written in Python and optimised to run in Docker/Kubernetes. It was developed as a bit of an educational project.
 Since Slack RTM (real time messaging) is out of date and due to be decommissioned, this bot uses even subscription.
-Credit to Robert Coleman (https://medium.com/@rdcolema7) for his great article on Slack frameworks, which this is based on.
 
 ## Slack Config
 
