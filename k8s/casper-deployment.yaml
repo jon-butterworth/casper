@@ -21,21 +21,21 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: slack-token
-                key: slack-token
+                key: SLACK_TOKEN
           - name: SIGN_SECRET
             valueFrom:
               secretKeyRef:
                 name: sign-secret
-                key: sign-secret
+                key: SIGN_SECRET
           - name: PYOWM_KEY
             valueFrom:
               secretKeyRef:
                 name: pyowm-key
-                key: pyowm-key
+                key: PYOWM_KEY
           - name: CRYPTO_KEY
             valueFrom:
               secretKeyRef:
                 name: crypto-key
-                key: crypro-key
+                key: CRYPTO_KEY
         ports:
         - containerPort: 5000
