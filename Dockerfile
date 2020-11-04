@@ -3,6 +3,5 @@ WORKDIR /casper
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 COPY . /casper
-CMD tail -f /dev/null
-#ENTRYPOINT [ "python3" ]
-#CMD [ "main.py" ]
+ENTRYPOINT [ "python3" ]
+CMD [ "main.py" ]
