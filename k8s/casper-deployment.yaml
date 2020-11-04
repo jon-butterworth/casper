@@ -16,5 +16,26 @@ spec:
       - name: casper
         image: jonnybinthemix/casper:1.0.0
         imagePullPolicy: Always
+        env:
+          - name: SLACK_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: slack-token
+                key: slack-token
+          - name: SIGN_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: sign-secret
+                key: sign-secret
+          - name: PYOWM_KEY
+            valueFrom:
+              secretKeyRef:
+                name: pyowm-key
+                key: pyowm-key
+          - name: CRYPTO_KEY
+            valueFrom:
+              secretKeyRef:
+                name: crypto-key
+                key: crypro-key
         ports:
         - containerPort: 5000
