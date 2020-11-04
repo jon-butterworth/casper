@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2beta9
+kind: Config
+metadata:
+  name: casperv-
+deploy:
+  kubectl:
+    manifests:
+    - k8s/casper-deployment.yaml
+    - k8s/casper-service.yaml
+    - k8s/ngrok-deployment.yaml
+    - k8s/ngrok-service.yaml
