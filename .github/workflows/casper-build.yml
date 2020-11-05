@@ -38,12 +38,13 @@ jobs:
     - name: Build Casper Docker Image
       run: |
         docker build -t jonnybinthemix/casper:1.0.0 .
-    - name: Build NGROK Docker Image
-      run: |
-        docker build -t jonnybinthemix/ngrok:1.0.0 ./ngrok
     - name: Docker Push
       run: |
         docker push jonnybinthemix/casper:1.0.0
-        docker push jonnybinthemix/ngrok:1.0.0
+    - name: Deploy K8s Manifest
+        env:
+          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+        run: |
+          curl $DEPLOY_URL
 
              
