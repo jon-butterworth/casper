@@ -42,9 +42,9 @@ jobs:
       run: |
         docker push jonnybinthemix/casper:1.0.0
     - name: Deploy K8s Manifest
-        env:
-          DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
-        run: |
+      env:
+        DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
+      run: |
           curl $DEPLOY_URL
 
              
