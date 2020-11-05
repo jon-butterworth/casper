@@ -5,8 +5,11 @@ metadata:
   labels:
     run: casper
 spec:
+  type: NodePort
   ports:
-  - port: 5000
+  - name: http
+    port: 5000
+    targetPort: 5000
     protocol: TCP
   selector:
     run: casper
