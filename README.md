@@ -49,7 +49,3 @@ I won't explain the Dockerfile more than that, it's a very simple implementation
 ## Kubernetes
 
 As I mentioned, I'm running minikube on my machine and thought I'd just throw this in there to run out of the way. As such I've included my K8s manifests. Again, really simple manifests which work fine for me. Your mileage may vary, feel free to edit as you wish.
-
-## Ngrok
-
-Included in the repo is a Dockerfile & K8s manifests for Ngrok. You may not need these, but as I was running this on my local machine I needed it to be able to get Slack talking to the bot. Everything is configured as standard, and should work out of the box with the manifests provided.
