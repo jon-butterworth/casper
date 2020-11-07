@@ -5,9 +5,11 @@ from textblob import Word
 from pyowm import OWM
 import json
 from requests import Request, Session
-
+import dateutil.parser
+from datetime import datetime, timedelta
 import nltk
-nltk.download('wordnet')
+
+nltk.download('wordnet', quiet=True)
 
 def check_weather(command):
     fluff_words = ['in', 'over', 'on', 'like']
@@ -63,3 +65,56 @@ def crypto_coin_price(command):
         price = x['quote']['USD']['price']
 
     return f'The current price of {crypto} is ${price:.2f}'
+
+def check_tides(command):
+    tidal_stations = {
+        'teignmouth': '0026', 'totnes': '0023C', 'torquay': '0025', 'exmouth': '0027'
+    }
+
+    fluff_words = ['time', 'times', 'for', 'in', 'at', 'tides']
+    command = "What's the tide times today for teignmouth?"
+    command = command.replace("?", "").split('tide')[1].split()
+    command = ", ".join(filter(lambda x: x not in fluff_words, command))
+
+    days = {'today': datetime.today().date(), 'tomorrow': datetime.today().date() + timedelta(days=1)}
+
+    for k, v in days.items():
+        if k in command:
+            day = v
+
+    for k, v in tidal_stations.items():
+        if k in command:
+            station_id = v
+            location = k
+
+    headers = {
+        'Ocp-Apim-Subscription-Key': 'a9826533aaee44a099999d698b74f93d',
+    }
+
+    url = f'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/{station_id}/TidalEvents'
+
+    session = Session()
+    session.headers.update(headers)
+
+    output = session.get(url)
+    data = json.loads(output.text)
+
+    idx = []
+    for i in range(24):
+        if dateutil.parser.parse(data[i]['Date']).date() == day:
+            idx.append(i)
+
+    print(f'Tide times in {location.title()} for {day.strftime("%d %B %Y")}:')
+    output = []
+    for tide in idx:
+        event = data[tide]['EventType'] == 'LowWater' and 'Low tide' or data[tide][
+            'EventType'] == 'HighWater' and 'High tide'
+        time = str(dateutil.parser.parse(data[tide]['DateTime']).time().replace(second=0, microsecond=0))[:-3]
+        height = round(data[tide]['Height'], 2)
+
+        output.append(f'{event} is at {time} and will be {height}m')
+        result = "\n".join(output)
+
+    return result
+
+print(check_tides("What are the tide times for totnes tomorrow?"))

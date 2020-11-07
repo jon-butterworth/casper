@@ -19,5 +19,8 @@ resp_dict = {
     ],
     'crypto': [
         rsp.crypto_coin_price
+    ],
+    'tides': [
+        rsp.check_tides
     ]
 }

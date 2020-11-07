@@ -9,7 +9,8 @@ match_triggers = (
 search_triggers = (
     (re.compile("weather"), "weather"),
     (re.compile("joke"), "joke"),
-    (re.compile("(bitcoin[?]|ethereum[?]|litecoin[?]|xrp[?])"), "crypto")
+    (re.compile("(bitcoin[?]|ethereum[?]|litecoin[?]|xrp[?])"), "crypto"),
+    (re.compile("(tide|tides)"), "tide")
 )
 
 
