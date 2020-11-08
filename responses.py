@@ -114,4 +114,4 @@ def check_tides(command):
         output.append(f'{event} is at {time} and will be {height}m')
         result = "\n".join(output)
 
-    return f'Tide times in {location.title()} for {day.strftime("%d %B %Y")}:', result
+    return result
