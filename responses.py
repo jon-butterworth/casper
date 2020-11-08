@@ -72,7 +72,6 @@ def check_tides(command):
     }
 
     fluff_words = ['time', 'times', 'for', 'in', 'at', 'tides']
-    command = "What's the tide times today for teignmouth?"
     command = command.replace("?", "").split('tide')[1].split()
     command = ", ".join(filter(lambda x: x not in fluff_words, command))
 
@@ -87,8 +86,9 @@ def check_tides(command):
             station_id = v
             location = k
 
+    apikey = os.environ['TIDE_KEY']
     headers = {
-        'Ocp-Apim-Subscription-Key': os.environ['TIDE_KEY'],
+        'Ocp-Apim-Subscription-Key': apikey,
     }
 
     url = f'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/{station_id}/TidalEvents'
