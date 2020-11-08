@@ -88,7 +88,7 @@ def check_tides(command):
             location = k
 
     headers = {
-        'Ocp-Apim-Subscription-Key': 'a9826533aaee44a099999d698b74f93d',
+        'Ocp-Apim-Subscription-Key': os.environ['TIDE_KEY'],
     }
 
     url = f'https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/{station_id}/TidalEvents'
@@ -114,5 +114,6 @@ def check_tides(command):
         output.append(f'{event} is at {time} and will be {height}m')
 
     output.insert(0, f"Tide times in {location.title()} for {day.strftime('%d %B %Y')}:\n")
+    print(location)
     result = "\n".join(output)
     return result

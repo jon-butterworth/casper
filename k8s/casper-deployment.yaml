@@ -37,5 +37,10 @@ spec:
               secretKeyRef:
                 name: crypto-key
                 key: CRYPTO_KEY
+          - name: TIDE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: tide-key
+                key: tide-key
         ports:
         - containerPort: 5000
