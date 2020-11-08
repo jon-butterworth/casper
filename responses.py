@@ -104,7 +104,6 @@ def check_tides(command):
         if dateutil.parser.parse(data[i]['Date']).date() == day:
             idx.append(i)
 
-    print(f'Tide times in {location.title()} for {day.strftime("%d %B %Y")}:')
     output = []
     for tide in idx:
         event = data[tide]['EventType'] == 'LowWater' and 'Low tide' or data[tide][
@@ -115,6 +114,4 @@ def check_tides(command):
         output.append(f'{event} is at {time} and will be {height}m')
         result = "\n".join(output)
 
-    return result
-
-print(check_tides("What are the tide times for totnes tomorrow?"))
+    return f'Tide times in {location.title()} for {day.strftime("%d %B %Y")}:', result
