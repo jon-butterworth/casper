@@ -71,15 +71,23 @@ def check_tides(command):
         'teignmouth': '0026', 'totnes': '0023C', 'torquay': '0025', 'exmouth': '0027'
     }
 
-    fluff_words = ['time', 'times', 'for', 'in', 'at', 'tides']
+    fluff_words = ['time', 'times', 'for', 'in', 'at', 'tides', 'on']
     command = command.replace("?", "").split('tide')[1].split()
     command = ", ".join(filter(lambda x: x not in fluff_words, command))
 
-    days = {'today': datetime.today().date(), 'tomorrow': datetime.today().date() + timedelta(days=1)}
+    days = {
+        'today': datetime.today().date(), 'tomorrow': datetime.today().date() + timedelta(days=1),
+        'monday': 0, 'tuesday': 1, 'wednesday': 2, 'thursday': 3, 'friday': 4, 'saturday': 5, 'sunday': 6
+    }
 
     for k, v in days.items():
-        if k in command:
+        if isinstance(v, int) and k in command:
+            delta = (v - datetime.today().weekday()) % 7
+            day = datetime.today().date() + timedelta(days=delta)
+        elif k in command:
             day = v
+        else:
+            day = datetime.today().date()
 
     for k, v in tidal_stations.items():
         if k in command:
