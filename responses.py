@@ -86,8 +86,6 @@ def check_tides(command):
             day = datetime.today().date() + timedelta(days=delta)
         elif k in command:
             day = v
-        # else:
-        #     day = datetime.today().date()
 
     for k, v in tidal_stations.items():
         if k in command:
